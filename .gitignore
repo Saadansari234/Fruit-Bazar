@@ -1,2 +1,7 @@
 # Ignore the folder named "template"
 template/
+# Ignore the folder named "admin-temp"
+admin-temp/
+
+# Ignore the folder named "nodemodules"
+website/node_modules
