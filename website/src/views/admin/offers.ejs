@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include ('includes/header'); %>
+
+
+    <body>
+        <div class="container-scroller">
+            <%- include ('includes/sidebar'); %>
+
+                <div class="container-fluid page-body-wrapper">
+
+                    <%- include ('includes/navbar'); %>
+
+                        <div class="main-panel">
+                            <div class="content-wrapper">
+                                <div class="row">
+
+                                    <div class="col-12 grid-margin stretch-card">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Upload Shops Products</h4>
+                                                <form class="forms-sample">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputName1">Quote</label>
+                                                        <input type="text" class="form-control" id="exampleInputName1"
+                                                            placeholder="Name">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleInputName1">Product Name</label>
+                                                        <input type="text" class="form-control" id="exampleInputName1"
+                                                            placeholder="Name">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleInputName1">Discount</label>
+                                                        <div class="input-group">
+                                                          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                                          <div class="input-group-append">
+                                                            <span class="input-group-text">%</span>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                                     
+                                                    <div class="form-group">
+                                                        <label>Upload Image</label>
+                                                        <input type="file" name="img[]" class="file-upload-default">
+                                                        <div class="input-group col-xs-12">
+                                                            <input type="text" class="form-control file-upload-info"
+                                                                disabled placeholder="Upload Image">
+                                                            <span class="input-group-append">
+                                                                <button class="file-upload-browse btn btn-primary"
+                                                                    type="button">Upload</button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleTextarea1">Description</label>
+                                                        <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                                    
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+        </div>
+
+        <%- include ('includes/footer'); %>
+    </body>
+
+</html>
