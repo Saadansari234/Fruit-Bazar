@@ -15,49 +15,80 @@
                         <div class="main-panel">
                             <div class="content-wrapper">
                                 <div class="row">
+                                    <!-- Display the message if it exists -->
+                                    <% if (message || errmessage) { %>
+                                        <div class="alert alert-<%= errmessage ? 'danger' : 'success' %>" role="alert">
+                                            <%= message || errmessage %>
+                                        </div>
+                                        <!-- Automatically hide the message after 3 seconds -->
+                                        <script>
+                                            setTimeout(function () {
+                                                document.querySelector('.alert').style.display = 'none';
+                                            }, 3000);
+                                        </script>
+                                        <% } %>
+                                        <div class="col-12 grid-margin stretch-card">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Upload Shops Products</h4>
+                                                    <form class="forms-sample" action="/submitShops"
+                                                        enctype="multipart/form-data" method="POST">
+                                                        <div class="form-group">
+                                                            <label for="exampleSelectGender">Category</label>
+                                                            <select class="form-control" name="category"
+                                                                id="exampleSelectGender">
+                                                                <option>strawberry</option>
+                                                                <option>berry</option>
+                                                                <option>Lemon</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputName1">Product Name</label>
+                                                            <input type="text" class="form-control" name="productName"
+                                                                id="productName" placeholder="Name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputName1">Price</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span
+                                                                        class="input-group-text bg-primary text-white">$</span>
+                                                                </div>
+                                                                <input type="number" class="form-control"
+                                                                    name="price" id="price"
+                                                                    aria-label="Amount (to the nearest dollar)"
+                                                                    required>
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">.00</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Enter Date</label>
+                                                            <input type="date" class="form-control" id="dateInput"
+                                                                name="date" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Upload Image</label>
+                                                            <input type="file" name="image" id="image"
+                                                                class="file-upload-default">
+                                                            <div class="input-group col-xs-12">
+                                                                <input type="text" class="form-control file-upload-info"
+                                                                    disabled placeholder="Upload Image">
+                                                                <span class="input-group-append">
+                                                                    <button class="file-upload-browse btn btn-primary"
+                                                                        type="button">Upload Image</button>
+                                                                </span>
+                                                            </div>
+                                                        </div>
 
-                                    <div class="col-12 grid-margin stretch-card">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Upload Shops Products</h4>
-                                                <form class="forms-sample">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputName1">Name</label>
-                                                        <input type="text" class="form-control" id="exampleInputName1"
-                                                            placeholder="Name">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputName1">Price</label>
-                                                        <div class="input-group">
-                                                          <div class="input-group-prepend">
-                                                            <span class="input-group-text bg-primary text-white">$</span>
-                                                          </div>
-                                                          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                                          <div class="input-group-append">
-                                                            <span class="input-group-text">.00</span>
-                                                          </div>
-                                                        </div>
-                                                    </div>
-                                                     
-                                                    <div class="form-group">
-                                                        <label>Upload Image</label>
-                                                        <input type="file" name="img[]" class="file-upload-default">
-                                                        <div class="input-group col-xs-12">
-                                                            <input type="text" class="form-control file-upload-info"
-                                                                disabled placeholder="Upload Image">
-                                                            <span class="input-group-append">
-                                                                <button class="file-upload-browse btn btn-primary"
-                                                                    type="button">Upload</button>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                                    
-                                                </form>
+                                                        <button type="submit"
+                                                            class="btn btn-primary mr-2">Submit</button>
+
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

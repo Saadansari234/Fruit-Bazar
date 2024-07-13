@@ -8,6 +8,7 @@ const post_routes= require("./post")
 const webpage_routes= require("./webpage.js")
 const adminpage_routes= require("./adminpage.js")
 const delete_req= require("./delete_req.js")
+
 const app = express()
 
 // connecting path hrough backend
@@ -57,3 +58,6 @@ app.use('/', adminpage_routes);
 app.listen(5000, () => {
     console.log("listening to port 5000")
 })
+
+
+

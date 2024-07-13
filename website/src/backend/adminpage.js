@@ -1,15 +1,17 @@
 const express = require('express');
 const admin_router = express.Router();
 const products_db = require('./models/products.js')
+const shops_db= require("./models/shops.js")
 
 /////// admin routes
 admin_router.get("/admin", async (req, res) => {
     try {
         // Fetch the top 3 products from the database
         const topProducts = await products_db.find().sort({ price: -1 }).limit(3);
+        const shopsProducts = await shops_db.find();
 
         // Render the EJS template and pass the topProducts data to it
-        res.render('admin/index', { topProducts: topProducts });
+        res.render('admin/index', { topProducts: topProducts, shopsProducts:shopsProducts});
     } catch (error) {
         // Handle error
         console.error('Error fetching top products:', error);
@@ -36,7 +38,17 @@ admin_router.get("/admin/login", (req, res) => {
 })
 
 admin_router.get("/admin/shops", (req, res) => {
-    res.render("admin/shops")
+     // Retrieve success message from session
+     const message = req.session.successMessage || '';
+     // Retrieve error message from session
+     const errmessage = req.session.errorMessage || '';
+     
+     // Clear messages from session
+     delete req.session.successMessage;
+     delete req.session.errorMessage;
+ 
+     // Render admin/top3 page with messages
+     res.render('admin/shops', { message: message, errmessage: errmessage });
 })
 admin_router.get("/admin/offers", (req, res) => {
     res.render("admin/offers")

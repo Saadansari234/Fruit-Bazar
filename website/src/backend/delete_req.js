@@ -3,6 +3,7 @@ const delet_req = express.Router();
 const products_db = require('./models/products.js')
 const fs = require('fs');
 const path = require('path')
+const shops_db= require("./models/shops.js")
 // const {uploadsPath} = require("./multer.js") 
 
 
@@ -27,6 +28,31 @@ delet_req.delete('/products/:id', async (req, res) => {
 
         // Delete the product from the database
         await products_db.findByIdAndDelete(productId);
+
+        res.sendStatus(200); // Send success response
+    } catch (error) {
+        console.error('Error deleting product:', error);
+        res.status(500).json({ error: 'Internal Server Error' }); // Send error response
+    }
+});
+
+
+delet_req.delete('/shops/:id', async (req, res) => {
+    const productId = req.params.id;
+    try {
+        // Find the product by ID
+        const product = await shops_db.findById(productId);
+
+        if (!product) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+
+        // Delete the associated image file
+        const imagePath = path.join(uploadsPath, product.image);
+        fs.unlinkSync(imagePath); // Delete the file synchronously
+
+        // Delete the product from the database
+        await shops_db.findByIdAndDelete(productId);
 
         res.sendStatus(200); // Send success response
     } catch (error) {
